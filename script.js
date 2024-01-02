@@ -1,6 +1,8 @@
+const itemInput = document.querySelector("#item-input");
+const addButton = document.querySelector("#btn-add");
+const itemList = document.querySelector(".main-content");
 const filterInput = document.querySelector("#filter-input");
 const clearButton = document.querySelector("#clear-btn");
-const itemList = document.querySelector(".main-content");
 
 // updates UI to check if the filter input and clear all button should be rendered
 const updateUI = () => {
@@ -16,6 +18,35 @@ const updateUI = () => {
   // show 'filter input' and 'clear all' button
   filterInput.style.display = "block";
   clearButton.style.display = "block";
+};
+
+//create new item
+const createItem = (item) => {
+  const div = document.createElement("div");
+  div.className = "item";
+  div.appendChild(document.createTextNode(item));
+
+  const img = document.createElement("img");
+  img.src = "./assets/icons/xmark-solid.svg";
+  img.alt = "delete item";
+  img.className = "remote-item-icon";
+  div.appendChild(img);
+
+  return div;
+};
+
+// add item to shopping list
+const addItem = (e) => {
+  e.preventDefault();
+
+  // input validation
+  if (itemInput.value === "") return;
+
+  // create new item and add to item list
+  itemList.appendChild(createItem(itemInput.value));
+  itemInput.value = "";
+
+  updateUI();
 };
 
 // removes the parent item of the 'remove icon' that is clicked
@@ -35,5 +66,6 @@ const clearAll = (e) => {
   updateUI();
 };
 
+addButton.addEventListener("click", addItem);
 itemList.addEventListener("click", removeItem);
 clearButton.addEventListener("click", clearAll);
