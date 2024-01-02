@@ -28,7 +28,7 @@ body {
 .main-content {
   width: 100%;
   flex-grow: 1;
-  overflow: scroll;
+  overflow-y: scroll;
   padding: 0 0.5rem 0 0.5rem;
 }
 
