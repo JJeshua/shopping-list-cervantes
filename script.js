@@ -20,7 +20,15 @@ const updateUI = () => {
   clearButton.style.display = "block";
 };
 
-//create new item
+// handle item input field
+const itemInputHandler = (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addItem(e);
+  }
+};
+
+// create new item
 const createItem = (item) => {
   const div = document.createElement("div");
   div.className = "item";
@@ -66,6 +74,7 @@ const clearAll = (e) => {
   updateUI();
 };
 
+itemInput.addEventListener("keypress", itemInputHandler);
 addButton.addEventListener("click", addItem);
 itemList.addEventListener("click", removeItem);
 clearButton.addEventListener("click", clearAll);
