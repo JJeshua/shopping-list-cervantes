@@ -23,4 +23,13 @@ const removeItem = (e) => {
   }
 };
 
+const clearAll = (e) => {
+  let itemContainer = document.querySelector(".main-content");
+  while (itemContainer.firstChild) {
+    itemContainer.removeChild(itemContainer.firstChild);
+  }
+  updateUI();
+};
+
 itemList.addEventListener("click", removeItem);
+clearButton.addEventListener("click", clearAll);
