@@ -10,12 +10,13 @@ const updateUI = () => {
 
   // don't render 'filter input' if no items exist
   if (itemContainer.children.length == 0) {
+    itemList.style.display = "none";
     filterInput.style.display = "none";
     clearButton.style.display = "none";
     return;
   }
 
-  // show 'filter input' and 'clear all' button
+  itemList.style.display = "flex";
   filterInput.style.display = "block";
   clearButton.style.display = "block";
 };
@@ -48,7 +49,7 @@ const addItem = (e) => {
   e.preventDefault();
 
   // input validation
-  if (itemInput.value === "") return;
+  if (itemInput.value.trimRight() === "") return;
 
   // create new item and add to item list
   itemList.appendChild(createItem(itemInput.value));
@@ -78,3 +79,4 @@ itemInput.addEventListener("keypress", itemInputHandler);
 addButton.addEventListener("click", addItem);
 itemList.addEventListener("click", removeItem);
 clearButton.addEventListener("click", clearAll);
+updateUI();
