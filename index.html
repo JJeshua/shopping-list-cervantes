@@ -1,11 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping List</title>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="wrapper gap-3">
+      <!-- Header  -->
+      <div class="header">
+        <div class="d-flex gap-3 mb-3">
+          <img
+            class="icon"
+            src="./assets/icons/note-sticky-regular.svg"
+            alt="sticky note"
+          />
+          <h1>Shopping List</h1>
+        </div>
+        <form id="item-form">
+          <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="Enter item" />
+            <button class="btn btn-primary" type="button" id="button-addon2">
+              Add item
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- Filter input -->
+      <input
+        type="text"
+        class="form-control"
+        id="filter-input"
+        name="item"
+        placeholder="Filter Items"
+      />
+      <!-- Display shopping list items -->
+      <div class="main-content d-flex flex-column gap-2">
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+        <div class="item">
+          Eggs
+          <img
+            src="./assets/icons/xmark-solid.svg"
+            alt="delete item"
+            class="remove-item-icon"
+          />
+        </div>
+      </div>
+      <button class="btn btn-danger w-100">Clear All</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
