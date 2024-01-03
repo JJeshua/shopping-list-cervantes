@@ -59,15 +59,34 @@ const createItem = (item) => {
 // add item to shopping list
 const addItem = (e) => {
   e.preventDefault();
+  let userInput = itemInput.value.trimRight();
 
   // input validation
-  if (itemInput.value.trimRight() === "") return;
+  if (userInput === "") return;
 
   // create new item and add to item list
-  itemList.appendChild(createItem(itemInput.value));
-  itemInput.value = "";
+  let item = createItem(userInput);
+  itemList.appendChild(item);
+  addItemToLocalStorage(userInput);
+  userInput = "";
 
   updateUI();
+};
+
+// add item to local storage
+const addItemToLocalStorage = (item) => {
+  let itemsFromStorage;
+
+  if (localStorage.getItem("items") === null) {
+    itemsFromStorage = [];
+  } else {
+    itemsFromStorage = JSON.parse(localStorage.getItem("items"));
+  }
+
+  itemsFromStorage.push(item);
+  console.log(itemsFromStorage);
+  console.log(JSON.stringify(itemsFromStorage));
+  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
 };
 
 // removes the parent item of the 'remove icon' that is clicked
@@ -84,6 +103,7 @@ const clearAll = (e) => {
   while (itemContainer.firstChild) {
     itemContainer.removeChild(itemContainer.firstChild);
   }
+  localStorage.clear();
   updateUI();
 };
 
