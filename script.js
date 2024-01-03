@@ -29,6 +29,18 @@ const itemInputHandler = (e) => {
   }
 };
 
+// filter item list
+const filterItems = (e) => {
+  const text = e.target.value.toLowerCase();
+  const items = itemList.querySelectorAll(".item");
+
+  items.forEach((item) => {
+    const itemName = item.textContent.toLowerCase();
+    const shouldDisplay = itemName.includes(text);
+    item.style.display = shouldDisplay ? "flex" : "none";
+  });
+};
+
 // create new item
 const createItem = (item) => {
   const div = document.createElement("div");
@@ -78,5 +90,6 @@ const clearAll = (e) => {
 itemInput.addEventListener("keypress", itemInputHandler);
 addButton.addEventListener("click", addItem);
 itemList.addEventListener("click", removeItem);
+filterInput.addEventListener("input", filterItems);
 clearButton.addEventListener("click", clearAll);
 updateUI();
