@@ -68,7 +68,7 @@ const addItem = (e) => {
   let item = createItem(userInput);
   itemList.appendChild(item);
   addItemToLocalStorage(userInput);
-  userInput = "";
+  itemInput.value = "";
 
   updateUI();
 };
@@ -84,17 +84,23 @@ const addItemToLocalStorage = (item) => {
   }
 
   itemsFromStorage.push(item);
-  console.log(itemsFromStorage);
-  console.log(JSON.stringify(itemsFromStorage));
   localStorage.setItem("items", JSON.stringify(itemsFromStorage));
 };
 
 // removes the parent item of the 'remove icon' that is clicked
 const removeItem = (e) => {
   if (e.target.parentElement.classList.contains("item")) {
+    removeItemFromLocalStorage(e.target.parentElement.textContent);
     e.target.parentElement.remove();
     updateUI();
   }
+};
+
+// remove item from local storage
+const removeItemFromLocalStorage = (item) => {
+  let items = getItemsFromLocalStorage();
+  items = items.filter((i) => i !== item);
+  localStorage.setItem("items", JSON.stringify(items));
 };
 
 // clears the entire shopping list and updates the UI
@@ -107,9 +113,31 @@ const clearAll = (e) => {
   updateUI();
 };
 
+const getItemsFromLocalStorage = () => {
+  if (localStorage.getItem("items") === null) return;
+
+  let items = [];
+  let itemNames = JSON.parse(localStorage.getItem("items"));
+  itemNames.forEach((itemName) => {
+    items.push(itemName);
+  });
+
+  return items;
+};
+
+// load items from local storage on page load
+const onPageLoad = () => {
+  let items = getItemsFromLocalStorage();
+  if (items === undefined) return;
+  items.forEach((item) => {
+    itemList.appendChild(createItem(item));
+  });
+};
+
 itemInput.addEventListener("keypress", itemInputHandler);
 addButton.addEventListener("click", addItem);
 itemList.addEventListener("click", removeItem);
 filterInput.addEventListener("input", filterItems);
 clearButton.addEventListener("click", clearAll);
+onPageLoad();
 updateUI();
